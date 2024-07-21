@@ -2,11 +2,13 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 
+const PORT2 = process.env.PORT2;
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ["http://localhost:3001", "http://localhost:5000"],
+        origin: [`http://localhost:${PORT2}`, "http://localhost:5000"],
         methods: ["GET", "POST"]
     }
 });

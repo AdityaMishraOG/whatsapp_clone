@@ -18,6 +18,7 @@ import { app, server } from "./socket/socket.js"; 21
 dotenv.config();
 // variables
 const PORT = process.env.PORT || 5000;
+const PORT2 = process.env.PORT2
 // const __dirname = path.resolve();
 
 // automatically parse incoming requests, adds middleware
@@ -40,7 +41,7 @@ app.use("/api/users", userRoutes);
 app.use(
     "/",
     createProxyMiddleware({
-        target: "http://localhost:3001", // URL of your React development server
+        target: `http://localhost:${PORT2}`, // URL of your React development server
         changeOrigin: true,
     })
 );
